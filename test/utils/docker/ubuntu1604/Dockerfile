@@ -46,6 +46,7 @@ RUN apt-get update -y && \
     subversion \
     sudo \
     unzip \
+    vim \
     virtualenv \
     xsltproc \
     zip \
@@ -53,7 +54,8 @@ RUN apt-get update -y && \
     apt-get clean
 
 RUN rm /etc/apt/apt.conf.d/docker-clean
-RUN mkdir /etc/ansible/
+RUN mkdir /etc/ansible/ && \
+    /ansible/playbooks
 RUN /bin/echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 RUN locale-gen en_US.UTF-8
 RUN ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && \
