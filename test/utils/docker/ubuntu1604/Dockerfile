@@ -54,7 +54,8 @@ RUN apt-get update -y && \
     apt-get clean
 
 RUN rm /etc/apt/apt.conf.d/docker-clean
-RUN mkdir /etc/ansible/ && \
+RUN mkdir -p \
+    /etc/ansible \
     /ansible/playbooks
 RUN /bin/echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 RUN locale-gen en_US.UTF-8
