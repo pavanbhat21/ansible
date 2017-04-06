@@ -58,7 +58,7 @@ RUN rm /etc/apt/apt.conf.d/docker-clean
 RUN mkdir -p \
     /etc/ansible \
     /ansible/playbooks
-RUN /bin/echo -e "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
+RUN touch /etc/ansible/hosts
 RUN /bin/echo -e "# config file for ansible\n# =======================\n[defaults]\ninventory = /etc/ansible/hosts\n\
 host_key_checking = False\n#log_path = /var/log/ansible.log" > /etc/ansible/ansible.cfg
 RUN /bin/echo -e 'USERNAME=$1\nPASSWORD=$2\nif [ $# != 2 ];then\n\
